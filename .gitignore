@@ -1,3 +1,7 @@
 .venv/
+.qtcreator/
 __pycache__/
 *.pyc
+user_images/*.jpg
+user_images/*.jpeg
+user_images/*.png
