@@ -1,0 +1,9 @@
+{
+    "files": [
+        "main.py",
+        "face_alignment.py",
+        "README.md",
+        ".gitignore",
+        "TODO/todo-2026-03-31.md"
+    ]
+}
