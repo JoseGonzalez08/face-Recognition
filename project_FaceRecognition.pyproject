@@ -1,9 +1,16 @@
 {
     "files": [
         "main.py",
+        "barcode_scanner.py",
         "face_alignment.py",
+        "medicine_records.json",
+        "medicine_registry.py",
         "README.md",
         ".gitignore",
-        "TODO/todo-2026-03-31.md"
+        "TODO/todo-2026-03-31.md",
+        "user_recognition.py",
+        "run.bat",
+        "user_images/.gitkeep",
+        "user_images/Jose.jpg"
     ]
 }
