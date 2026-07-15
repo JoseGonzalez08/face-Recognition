@@ -1,85 +1,59 @@
 # Face Recognition Project
 
-Basic PySide6 and OpenCV project with webcam start and stop controls, saved
-face recognition, and local medicine barcode matching.
+This project uses `PySide6` and `OpenCV` to show a live camera feed, recognize a saved user by face, and guide the user to scan a medicine barcode after recognition.
 
-Saved user face images are stored in `user_images/`. Start the camera, align
-the face, then click `Save Current User` to register the current face with a
-name. Once a saved face is recognized, the app starts looking for a medicine
-barcode in the camera feed. If the barcode is assigned to the recognized user,
-the app displays the medicine name, description, uses, and directions.
+## Current Behavior
 
-Medicine barcode assignments live in `medicine_records.json`. Each record is a
-barcode tied to one user and one medicine. Update that file to add more users
-or more medicines.
+- A large centered guide box is shown on the camera preview.
+- The guide box is `red` when the face is outside the target area.
+- The guide box turns `green` when the detected face is fully inside the target area.
+- If the face matches a saved user, the recognition logic stays the same and the overlay changes to `blue` to tell the user they can now scan the medicine.
+- After the user is recognized, detected barcode outlines are shown on screen.
+- The barcode outline stays `red` when it is outside the target box.
+- The barcode outline turns `blue` when the barcode is fully inside the target box.
+- The label under the camera shows the recognized user name or `Unknown User`.
+- When a scanned barcode belongs to the recognized user, the app shows the saved medicine details.
+- When a scanned barcode exists but belongs to another user, the app reports that ownership mismatch.
+- When a scanned barcode does not exist in the local records, the app reports that no medicine record was found for the recognized user.
+- If the current face is aligned and not already saved, you can use `Save Current User` to register that person.
 
-## Current workflow
+Saved user face images are stored in `user_images/`.
+Medicine records are stored in `medicine_records.json`.
 
-1. Start the camera.
-2. Let the app recognize a saved user face.
-3. Once a known user is recognized, present a medicine barcode to the camera.
-4. If the barcode belongs to that user, the app shows:
-   - medicine name
-   - assigned user name
-   - description
-   - uses
-   - directions
-5. If the barcode belongs to a different user or is missing from the registry,
-   the app shows a rejection or not-found message.
+## Project Files
 
-## Local data files
+- `main.py`: Starts the GUI and updates the live camera frame.
+- `face_alignment.py`: Draws the face target box, face box, and barcode/object overlay colors.
+- `user_recognition.py`: Loads saved users, detects faces, and matches them.
+- `barcode_scanner.py`: Detects barcodes and returns their outline points.
+- `medicine_registry.py`: Loads medicine/barcode records from `medicine_records.json`.
+- `medicine_records.json`: Local barcode-to-user medicine records used by the app.
 
-- `user_images/`: saved face images used for recognition
-- `medicine_records.json`: local barcode-to-user medicine registry
+## How To Run
 
-Example record shape:
-
-```json
-{
-  "barcode": "036000291452",
-  "user_name": "Jose",
-  "medicine_name": "Acetaminophen 500 mg",
-  "description": "Pain reliever and fever reducer tablets.",
-  "uses": "Temporary relief of minor aches, pains, and fever.",
-  "directions": "Take as directed on the package or by a licensed clinician."
-}
-```
-
-## What has been set up
-
-So far, the project uses a local Python virtual environment in `.venv/` and
-runs the GUI from `main.py`. The original command to start the project was:
+Run the app from the project root folder:
 
 ```powershell
 .\.venv\Scripts\python.exe main.py
 ```
 
-To make that easier, a Windows launcher script named `run.bat` was added. It
-uses the Python executable inside `.venv/` and starts `main.py` for you.
+If the virtual environment is not active yet, that command is enough in this project because it directly uses the local Python inside `.venv`.
 
-## Run the project
+## Requirements
 
-From the root folder of the project, run:
+- Windows
+- A working webcam
+- The project virtual environment in `.venv`
+- Python packages used by the app, including `PySide6` and `opencv-python`
 
-```powershell
-.\run
-```
+## Basic Use
 
-This is the shorter version of running the full virtual environment command.
-
-## Status
-
-Implemented:
-
-- face recognition with saved user images
-- face alignment box feedback
-- local barcode scanning with OpenCV barcode detector
-- local user-to-medicine matching
-- on-screen medicine details after a valid match
-
-Not implemented yet:
-
-- live tested barcode scanner validation with real medicine packaging
-- online medicine lookup from FDA / RxNorm
-- UI for adding medicine records without editing JSON
-
+1. Start the application.
+2. Click `Start Camera`.
+3. Move your face into the centered box until it turns green.
+4. If your face is recognized, the box turns blue.
+5. Hold the medicine barcode inside the same box.
+6. When the barcode outline turns blue, it is inside the scan area.
+7. If the barcode matches the recognized user, the medicine details appear below the camera feed.
+8. If the barcode belongs to another saved user, the app reports that the barcode belongs to someone else.
+9. To register a new person, keep the face aligned and click `Save Current User`.

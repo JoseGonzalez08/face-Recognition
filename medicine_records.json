@@ -1,0 +1,12 @@
+{
+  "records": [
+    {
+      "barcode": "036000291452",
+      "user_name": "Jose",
+      "medicine_name": "Acetaminophen 500 mg",
+      "description": "Pain reliever and fever reducer tablets.",
+      "uses": "Temporary relief of minor aches, pains, and fever.",
+      "directions": "Take as directed on the package or by a licensed clinician."
+    }
+  ]
+}
