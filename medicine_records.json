@@ -1,0 +1,52 @@
+{
+  "records": [
+    {
+      "barcode": "036000291452",
+      "user_name": "Jose",
+      "medicine_name": "Acetaminophen 500 mg",
+      "description": "Pain reliever and fever reducer tablets.",
+      "uses": "Temporary relief of minor aches, pains, and fever.",
+      "directions": "For testing, read the package label; do not use this prototype for dosage decisions.",
+      "demo_notice": "This is simulated local data for testing the barcode workflow.",
+      "demo_status": "green",
+      "demo_symptoms": [],
+      "demo_warning": "No warning is assigned in this test scenario."
+    },
+    {
+      "barcode": "135791357917",
+      "user_name": "Alex",
+      "medicine_name": "Demo Heart Tablet 5 mg",
+      "description": "A fictional medicine record used to test user ownership.",
+      "uses": "Prototype testing only.",
+      "directions": "Do not use this fictional record for medical decisions.",
+      "demo_notice": "This record belongs to the fictional user Alex and should produce yellow when Jose scans it.",
+      "demo_status": "green",
+      "demo_symptoms": [],
+      "demo_warning": "The medicine record is not assigned to the recognized user."
+    },
+    {
+      "barcode": "987654321098",
+      "user_name": "Jose",
+      "medicine_name": "Demo Relief Tablet 25 mg",
+      "description": "A fictional medicine used to demonstrate a symptom caution.",
+      "uses": "Prototype testing only.",
+      "directions": "Review the simulated effects shown by the prototype.",
+      "demo_notice": "All medicine details and symptoms in this record are invented for software testing.",
+      "demo_status": "yellow",
+      "demo_symptoms": ["mild dizziness", "dry mouth", "sleepiness"],
+      "demo_warning": "The test profile reports non-emergency symptoms that should be reviewed."
+    },
+    {
+      "barcode": "314159265358",
+      "user_name": "Jose",
+      "medicine_name": "Demo Allergy Trigger Tablet 10 mg",
+      "description": "A fictional medicine used to demonstrate a blocked allergy result.",
+      "uses": "Prototype testing only.",
+      "directions": "Do not use; this is a simulated blocked result.",
+      "demo_notice": "All medicine details and reactions in this record are invented for software testing.",
+      "demo_status": "red",
+      "demo_symptoms": ["hives", "facial swelling", "difficulty breathing"],
+      "demo_warning": "SIMULATED ALLERGY ALERT: the test profile records a prior serious reaction."
+    }
+  ]
+}
