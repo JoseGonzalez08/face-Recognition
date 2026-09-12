@@ -16,7 +16,7 @@ _FACE_CASCADE = cv2.CascadeClassifier(
 
 def annotate_face_alignment(frame, user_recognized=False, barcode_points_list=None):
     height, width, _ = frame.shape
-    target_box = _get_target_box(width, height)
+    target_box = get_target_box(width, height)
     face_box = _detect_largest_face(frame)
 
     is_aligned = face_box is not None and _box_contains(target_box, face_box)
@@ -33,14 +33,14 @@ def annotate_face_alignment(frame, user_recognized=False, barcode_points_list=No
     if barcode_points_list:
         for barcode_points in barcode_points_list:
             barcode_color = BOX_COLOR_OUTSIDE
-            if user_recognized and _polygon_inside_box(target_box, barcode_points):
+            if user_recognized and polygon_inside_box(target_box, barcode_points):
                 barcode_color = BOX_COLOR_READY
             _draw_polygon(frame, barcode_points, barcode_color)
 
     return frame
 
 
-def _get_target_box(frame_width, frame_height):
+def get_target_box(frame_width, frame_height):
     box_width = int(frame_width * TARGET_BOX_WIDTH_RATIO)
     box_height = int(frame_height * TARGET_BOX_HEIGHT_RATIO)
     left = (frame_width - box_width) // 2
@@ -87,7 +87,7 @@ def _draw_box(frame, box, color):
     cv2.rectangle(frame, (left, top), (right, bottom), color, BOX_THICKNESS)
 
 
-def _polygon_inside_box(box, points):
+def polygon_inside_box(box, points):
     left, top, width, height = box
     right = left + width
     bottom = top + height

@@ -5,3 +5,4 @@ __pycache__/
 user_images/*.jpg
 user_images/*.jpeg
 user_images/*.png
+scan_events.jsonl

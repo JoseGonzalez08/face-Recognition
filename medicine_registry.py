@@ -14,6 +14,10 @@ class MedicineRecord:
     description: str
     uses: str
     directions: str
+    demo_notice: str
+    demo_status: str
+    demo_symptoms: list[str]
+    demo_warning: str
 
 
 class MedicineRegistry:
@@ -42,6 +46,16 @@ class MedicineRegistry:
                 description=record["description"].strip(),
                 uses=record["uses"].strip(),
                 directions=record["directions"].strip(),
+                demo_notice=record.get(
+                    "demo_notice", "Prototype test record only. Not medical advice."
+                ).strip(),
+                demo_status=record.get("demo_status", "green").strip().lower(),
+                demo_symptoms=[
+                    str(symptom).strip()
+                    for symptom in record.get("demo_symptoms", [])
+                    if str(symptom).strip()
+                ],
+                demo_warning=record.get("demo_warning", "").strip(),
             )
             for record in data.get("records", [])
             if str(record.get("barcode", "")).strip()
@@ -71,12 +85,19 @@ class MedicineRegistry:
         return None
 
     def format_record_summary(self, record):
+        symptoms = ", ".join(record.demo_symptoms) if record.demo_symptoms else "None in this test scenario"
+        warning = record.demo_warning or "No warning in this test scenario."
         return (
+            f"PROTOTYPE TEST RECORD — NOT MEDICAL ADVICE\n"
+            f"Demo status: {record.demo_status.upper()}\n"
             f"Medicine: {record.medicine_name}\n"
             f"For: {record.user_name}\n"
             f"Description: {record.description}\n"
             f"Uses: {record.uses}\n"
-            f"Directions: {record.directions}"
+            f"Directions: {record.directions}\n"
+            f"Simulated symptoms/effects: {symptoms}\n"
+            f"Demo warning: {warning}\n"
+            f"Notice: {record.demo_notice}"
         )
 
     def _normalize_name(self, user_name):

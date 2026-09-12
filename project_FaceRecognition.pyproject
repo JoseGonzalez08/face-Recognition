@@ -3,14 +3,23 @@
         "main.py",
         "barcode_scanner.py",
         "face_alignment.py",
+        "scan_logger.py",
         "medicine_records.json",
         "medicine_registry.py",
+        "requirements.txt",
         "README.md",
         ".gitignore",
         "TODO/todo-2026-03-31.md",
         "user_recognition.py",
         "run.bat",
-        "user_images/.gitkeep",
-        "user_images/Jose.jpg"
+        "test_barcodes/generate_test_barcode.py",
+        "test_barcodes/acetaminophen_036000291452.png",
+        "test_barcodes/01_green_known_medicine.png",
+        "test_barcodes/02_yellow_wrong_user.png",
+        "test_barcodes/03_red_unknown_barcode.png",
+        "test_barcodes/04_yellow_simulated_symptoms.png",
+        "test_barcodes/05_red_simulated_allergy.png",
+        "tests/test_barcode_workflow.py",
+        "user_images/.gitkeep"
     ]
 }
