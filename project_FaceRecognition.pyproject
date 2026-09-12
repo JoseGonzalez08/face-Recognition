@@ -9,7 +9,6 @@
         "requirements.txt",
         "README.md",
         ".gitignore",
-        "TODO/todo-2026-03-31.md",
         "user_recognition.py",
         "run.bat",
         "test_barcodes/generate_test_barcode.py",
